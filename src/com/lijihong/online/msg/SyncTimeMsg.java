@@ -1,4 +1,4 @@
-package com.azazo1.online.msg;
+package com.lijihong.online.msg;
 
 /**
  * 客户端向服务端请求时间同步的消息

@@ -1,2 +1,4 @@
-package com.lijihong.util;public @interface NotNull {
+package com.lijihong.util;
+
+public @interface NotNull {
 }

@@ -1,4 +1,4 @@
-package com.azazo1.online.msg;
+package com.lijihong.online.msg;
 
 
 /**
