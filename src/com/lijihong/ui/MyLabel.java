@@ -1,17 +1,13 @@
 package com.lijihong.ui;
 
-/*
- * \* Created with IntelliJ IDEA.
- * \* @ProjectName: TankWar
- * \* @FileName: MyLabel
- * \* @author: li-jihong
- * \* Date: 2023-04-25 18:50
- */
-
 import com.lijihong.Config;
-import com.lijihong.util.NotNull;
-import com.lijihong.util.Nullable;
+import com.lijihong.game.bullet.BulletGroup;
+import com.lijihong.game.tank.TankBase;
+import com.lijihong.game.tank.TankGroup;
+import com.lijihong.online.msg.MsgBase;
 import com.lijihong.util.Tools;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.border.Border;

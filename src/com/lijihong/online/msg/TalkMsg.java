@@ -1,6 +1,7 @@
 package com.lijihong.online.msg;
 
 import com.lijihong.Config;
+import com.lijihong.online.server.toclient.TalkingRoom;
 import org.jetbrains.annotations.NotNull;
 
 /**

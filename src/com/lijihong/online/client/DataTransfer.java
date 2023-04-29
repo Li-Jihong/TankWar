@@ -2,6 +2,8 @@ package com.lijihong.online.client;
 
 import com.lijihong.Config;
 import com.lijihong.online.Communicator;
+import com.lijihong.online.msg.GameStateMsg;
+import com.lijihong.online.msg.MsgBase;
 import com.lijihong.util.Tools;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

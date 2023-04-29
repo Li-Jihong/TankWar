@@ -1,6 +1,7 @@
 package com.lijihong.ui;
 
 import com.lijihong.Config;
+import com.lijihong.base.SingleInstance;
 import com.lijihong.util.Tools;
 
 import javax.imageio.ImageIO;
@@ -8,13 +9,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
-/**
- * \* Created with IntelliJ IDEA.
- * \* @ProjectName: TankWar
- * \* @FileName: MyFrame
- * \* @author: li-jihong
- * \* Date: 2023-04-25 18:49
- */
+import static com.lijihong.util.Tools.resizeWindow;
+
 public class MyFrame extends JFrame implements SingleInstance {
     protected static MyFrame instance;
 

@@ -1,18 +1,13 @@
 package com.lijihong.ui;
 
-/*
- * \* Created with IntelliJ IDEA.
- * \* @ProjectName: TankWar
- * \* @FileName: MenuPanel
- * \* @author: li-jihong
- * \* Date: 2023-04-25 18:48
-*/
-
 import com.lijihong.Config;
+import com.lijihong.base.PlayingMode;
+import com.lijihong.game.session.GameSession;
+import com.lijihong.game.wall.WallGroup;
 import com.lijihong.util.JRadioButtonGroup;
 import com.lijihong.util.MyURL;
-import com.lijihong.util.NotNull;
-import com.lijihong.util.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;

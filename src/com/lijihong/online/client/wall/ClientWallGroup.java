@@ -1,5 +1,6 @@
 package com.lijihong.online.client.wall;
 
+import com.lijihong.game.wall.WallGroup;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.image.BufferedImage;

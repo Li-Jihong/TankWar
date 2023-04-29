@@ -1,5 +1,7 @@
 package com.lijihong.online.client.bullet;
 
+import com.lijihong.game.bullet.BulletBase;
+import com.lijihong.game.bullet.BulletGroup;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;

@@ -8,6 +8,8 @@ package com.lijihong.util;
  * \* Date: 2023-04-25 18:42
  */
 
+import com.lijihong.ui.MyFrame;
+
 import java.awt.*;
 import java.awt.event.WindowListener;
 import java.util.Vector;

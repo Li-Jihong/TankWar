@@ -1,5 +1,7 @@
 package com.lijihong.online.client.wall;
 
+import com.lijihong.game.wall.Wall;
+
 /**
  * \* Created with IntelliJ IDEA.
  * \* @ProjectName: TankWar

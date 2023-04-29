@@ -1,6 +1,9 @@
 package com.lijihong.util;
 
 import com.lijihong.Config;
+import com.lijihong.game.tank.TankBase;
+import jmp123.PlayBack;
+import jmp123.output.Audio;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -212,7 +215,7 @@ public final class Tools {
     /**
      * 播放音效(新线程中)
      * 服务端 并不会发出声音(通过覆盖为广播事件)
-     * 客户端只会在接收到 {@link com.azazo1.online.msg.GlobalEventMsg} 才会发出对应音效
+     * 客户端只会在接收到 {@link com.lijihong.online.msg.GlobalEventMsg} 才会发出对应音效
      */
     public static void playSound(@NotNull URL path) {
         if (Config.doPlaySound.get()) {

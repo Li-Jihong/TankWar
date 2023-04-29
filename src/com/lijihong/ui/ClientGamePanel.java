@@ -1,16 +1,18 @@
 package com.lijihong.ui;
 
-/**
- * \* Created with IntelliJ IDEA.
- * \* @ProjectName: TankWar
- * \* @FileName: ClientGamePanel
- * \* @author: li-jihong
- * \* Date: 2023-04-25 18:55
- */
-
 import com.lijihong.Config;
+import com.lijihong.game.bullet.BulletGroup;
+import com.lijihong.game.session.ServerGameSessionIntro;
+import com.lijihong.game.tank.TankBase;
+import com.lijihong.game.tank.TankGroup;
+import com.lijihong.online.client.ClientGameMap;
+import com.lijihong.online.client.bullet.ClientBulletGroup;
+import com.lijihong.online.client.tank.ClientTankGroup;
+import com.lijihong.online.msg.MsgBase;
 import com.lijihong.util.MyFrameSetting;
+import com.lijihong.util.Timer;
 import com.lijihong.util.Tools;
+import com.lijihong.ui.*;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -127,7 +129,7 @@ public class ClientGamePanel {
      * @see MyLabel#setText(int, int, TankGroup)
      * @see MyLabel#setText(int, BulletGroup)
      * @see MyLabel#setText(int, int)
-     * @see MyLabel#setText(int, int, com.azazo1.online.msg.MsgBase)
+     * @see MyLabel#setText(int, int, com.lijihong.online.msg.MsgBase)
      * @see MyLabel#setText(TankBase.TankInfo)
      */
     public void updateLabels() {
@@ -183,4 +185,5 @@ public class ClientGamePanel {
         originalFrameSetting.restore();
         alive.set(false);
     }
+
 }

@@ -7,6 +7,9 @@ package com.lijihong.online.msg;
  * \* @author: li-jihong
  * \* Date: 2023-04-28 22:08
  */
+
+import com.lijihong.game.GameMap;
+
 /**
  * 服务器广播游戏结束
  */

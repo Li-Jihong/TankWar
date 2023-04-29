@@ -1,5 +1,8 @@
 package com.lijihong.online.client.tank;
 
+import com.lijihong.game.tank.TankBase;
+import com.lijihong.game.tank.TankGroup;
+import com.lijihong.online.client.Client;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -16,7 +19,7 @@ public class ClientTankGroup extends TankGroup {
 
     /**
      * <h3>同步坦克状态</h3>
-     * 一般不会出现 {@link ClientTankGroup} 有而 {@link com.azazo1.game.tank.TankBase.TankInfo} 中没有的坦克
+     * 一般不会出现 {@link ClientTankGroup} 有而 {@link com.lijihong.game.tank.TankBase.TankInfo} 中没有的坦克
      */
     public void syncTanks(@NotNull Vector<TankBase.TankInfo> tankInfos, @NotNull Client client) {
         for (TankBase.TankInfo info : tankInfos) {

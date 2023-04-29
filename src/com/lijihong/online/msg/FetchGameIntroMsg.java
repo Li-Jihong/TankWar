@@ -7,6 +7,9 @@ package com.lijihong.online.msg;
  * \* @author: li-jihong
  * \* Date: 2023-04-28 22:06
  */
+
+import com.lijihong.game.session.ServerGameSessionIntro;
+
 /**
  * 客户端向服务器申请获取单局游戏基本配置 (非 {@link com.lijihong.game.GameMap.GameInfo} (-> 游戏结局信息)) 的消息
  */

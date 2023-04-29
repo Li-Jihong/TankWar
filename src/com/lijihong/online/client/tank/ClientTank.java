@@ -9,6 +9,8 @@ package com.lijihong.online.client.tank;
  */
 
 import com.lijihong.Config;
+import com.lijihong.game.bullet.BulletBase;
+import com.lijihong.game.tank.TankBase;
 import com.lijihong.util.Tools;
 import org.jetbrains.annotations.NotNull;
 

@@ -1,5 +1,7 @@
 package com.lijihong.online.client.item;
 
+import com.lijihong.game.item.ItemBase;
+import com.lijihong.game.item.ItemGroup;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;

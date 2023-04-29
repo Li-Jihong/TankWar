@@ -6,6 +6,10 @@ package com.lijihong;
   \* @author: li-jihong
   \* Date: 2023-04-25 18:21
 */
+import com.lijihong.base.TankAction;
+import com.lijihong.online.server.toclient.Server;
+import com.lijihong.ui.Translation;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;

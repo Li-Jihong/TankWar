@@ -1,6 +1,11 @@
 package com.lijihong.ui;
 
 import com.lijihong.Config;
+import com.lijihong.base.PlayingMode;
+import com.lijihong.game.GameMap;
+import com.lijihong.game.session.GameSession;
+import com.lijihong.game.tank.TankBase;
+import com.lijihong.game.tank.TankGroup;
 import com.lijihong.util.MyFrameSetting;
 import com.lijihong.util.Tools;
 
@@ -12,13 +17,6 @@ import java.awt.event.WindowEvent;
 import java.util.Vector;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/**
- * \* Created with IntelliJ IDEA.
- * \* @ProjectName: TankWar
- * \* @FileName: GamePanel
- * \* @author: li-jihong
- * \* Date: 2023-04-25 18:48
- */
 public class GamePanel extends MyPanel {
     protected final String mode; // 游戏模式 @see PlayingMode
     private final MyFrameSetting originalFrameSetting;

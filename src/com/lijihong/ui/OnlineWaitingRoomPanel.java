@@ -1,14 +1,20 @@
 package com.lijihong.ui;
 
-/**
- * \* Created with IntelliJ IDEA.
- * \* @ProjectName: TankWar
- * \* @FileName: OnlineWaitingRoomPanel
- * \* @author: li-jihong
- * \* Date: 2023-04-25 18:56
- */
-
 import com.lijihong.Config;
+import com.lijihong.base.TankAction;
+import com.lijihong.game.session.ServerGameSessionIntro;
+import com.lijihong.game.tank.TankBase;
+import com.lijihong.game.wall.WallGroup;
+import com.lijihong.online.client.Client;
+import com.lijihong.online.client.ClientGameMap;
+import com.lijihong.online.client.bullet.ClientBulletGroup;
+import com.lijihong.online.client.item.ClientItemGroup;
+import com.lijihong.online.client.tank.ClientTank;
+import com.lijihong.online.client.tank.ClientTankGroup;
+import com.lijihong.online.client.wall.ClientWallGroup;
+import com.lijihong.online.msg.*;
+import com.lijihong.online.server.toclient.ClientHandler;
+import com.lijihong.online.server.toclient.TalkingRoom;
 import com.lijihong.util.MyFrameSetting;
 import com.lijihong.util.MyURL;
 import com.lijihong.util.Tools;
@@ -27,6 +33,13 @@ import java.util.HashMap;
 import java.util.Objects;
 import java.util.Vector;
 import java.util.concurrent.atomic.AtomicBoolean;
+
+import static com.lijihong.online.msg.PostGameIntroMsg.*;
+import static com.lijihong.online.msg.RegisterMsg.RegisterResponseMsg.*;
+import static com.lijihong.online.msg.ReqGameStartMsg.*;
+import static com.lijihong.online.server.toclient.Server.GAMING;
+import static com.lijihong.online.server.toclient.Server.WAITING;
+import static com.lijihong.util.Tools.resizeWindow;
 
 /**
  * 用户选择了服务器地址和端口但仍未开始连接, 本Panel实现连接服务器, 等待大厅（玩家详情）, 房主选择墙图, 房主开始游戏的功能
