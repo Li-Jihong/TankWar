@@ -95,17 +95,14 @@ public class MenuPanel extends MyPanel {
     }
 
     private String @NotNull [] getLocalPlayerNames() {
-        Vector<String> rst = new Vector<>();
-        localPlayerNames.forEach((box -> {
-            Document doc = ((JTextField) box.getComponents()[1]).getDocument();
-            try {
-                rst.add(doc.getText(0, doc.getLength()));
-            } catch (BadLocationException e) {
-                throw new RuntimeException(e);
-            }
-        }));
-        return rst.toArray(new String[]{});
+//        使用 Stream API，我们可以将 Vector 转换为一个流，然后使用 map 操作符将
+//        每个 JTextField 转换为其文本值，最后使用 toArray 方法将流转换为字符串数组。
+//        这种方式的好处是代码更简洁、易读，并且在性能方面通常也是更好的选择。
+        return localPlayerNames.stream()
+                .map(box -> ((JTextField) box.getComponents()[1]).getText())
+                .toArray(String[]::new);
     }
+
 
     /**
      * 构建组件内容

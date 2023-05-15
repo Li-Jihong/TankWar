@@ -18,7 +18,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class Config {
 
-    public static final int FPS = 60;
+    public static final int FPS = 60; // 其中Config.FPS是帧率
     public static final Font TEXT_FONT = new Font("楷体", Font.PLAIN, 15);
     public static final Font TEXT_FONT_FOCUSED = new Font("楷体", Font.BOLD, 15);
     public static final Font TANK_SEQ_FONT = new Font("楷体", Font.BOLD, 15); // 坦克上的序号字体
@@ -146,6 +146,10 @@ public final class Config {
      * 游戏线程名字
      */
     public static final String GAME_THREAD_NAME = "GameProcess";
+
+    //内部MyPanel的宽度和高度相对于MyFrame的比例：
+    public static final double PANEL_WIDTH_RATIO = 1.0;
+    public static final double PANEL_HEIGHT_RATIO = 1.0;
 
     private Config() {
     }

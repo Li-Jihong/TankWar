@@ -232,15 +232,15 @@ public final class Tools {
     }
 
     /**
-     * 初始化, 放在 main 前部即可
+     * 初始化, 放在 main 前面即可
      */
     public static void init() throws IOException {
-        TankBase.getSeqModule().init();
-        MyEventQueue.cancel();
-        Tools.clearFrameData();
-        loadedImg.clear();
+        TankBase.getSeqModule().init(); // 初始化序列模块，序列模块用于管理游戏中的序列（如动画序列）。
+        MyEventQueue.cancel(); // 取消所有之前设置的事件。
+        Tools.clearFrameData(); // 清除框架数据，以便在重新开始游戏时重新加载。
+        loadedImg.clear(); // 清空已加载的图像缓存，以便在重新开始游戏时重新加载。
         // 初始化(清空) temp 目录
-        File tempDir = new File(Config.TEMP_DIR);
+        File tempDir = new File(Config.TEMP_DIR); // 创建一个临时目录对象。
         if (!tempDir.exists()) {
             boolean rst = tempDir.mkdirs();
         } else if (tempDir.isDirectory()) {

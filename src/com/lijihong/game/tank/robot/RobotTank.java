@@ -36,8 +36,6 @@ public class RobotTank extends TankBase {
      * 可探索路径点距离子弹的最小距离, 路径点与子弹距离小于此值将会被标记为不可探索,
      */
     protected final double bulletDistance = rect.width;
-    protected volatile WayPoint startPoint;
-    protected volatile TankBase targetTank;
     /**
      * 用于执行 TWR 各种长时间动作
      */
@@ -59,10 +57,6 @@ public class RobotTank extends TankBase {
      */
     protected final AtomicInteger differentTargetTimes = new AtomicInteger(0);
     /**
-     * TWR 行进路线
-     */
-    protected volatile Route route = null;
-    /**
      * 子弹飞行模拟器
      */
     protected final BulletSimulator bulletSimulator = new BulletSimulator();
@@ -70,12 +64,16 @@ public class RobotTank extends TankBase {
      * 全方位子弹模拟的角度间隔 ([0, PI*2]), 越小模拟越精细, 越大模拟越迅速
      */
     protected final double simulateIncrementStep = 5.0 / 180 * Math.PI;
-
     /**
      * 进行全方向子弹模拟的间隔时间控制
      */
     protected final IntervalTicker allOrientationSimulatorTicker = new IntervalTicker(1000);
-
+    protected volatile WayPoint startPoint;
+    protected volatile TankBase targetTank;
+    /**
+     * TWR 行进路线
+     */
+    protected volatile Route route = null;
 
     {
         // 禁用按键
@@ -119,8 +117,7 @@ public class RobotTank extends TankBase {
             double minDistance_pow2 = Double.MAX_VALUE;
             for (TankBase tankBase : livingTanks) {
                 if (tankBase.getSeq() != getSeq()) {
-                    double distance_pow2 = Math.pow(rect.getCenterX() - tankBase.getRect().getCenterX(), 2)
-                            + Math.pow(rect.getCenterY() - tankBase.getRect().getCenterY(), 2);
+                    double distance_pow2 = Math.pow(rect.getCenterX() - tankBase.getRect().getCenterX(), 2) + Math.pow(rect.getCenterY() - tankBase.getRect().getCenterY(), 2);
                     if (distance_pow2 < minDistance_pow2) { // 选择距离最短的坦克
                         targetTank = tankBase;
                         minDistance_pow2 = distance_pow2;
@@ -201,8 +198,7 @@ public class RobotTank extends TankBase {
         putAction(new GoingAction(nearDistance - 5), false, true);
 
         // 寻路行进时若发射方向上能打击到坦克则发射
-        if (route.getTotalDistance() > nearDistance + 5
-                && bulletSimulator.simulate(this)) { // 模拟子弹飞行, 若打到自己则不发射
+        if (route.getTotalDistance() > nearDistance + 5 && bulletSimulator.simulate(this)) { // 模拟子弹飞行, 若打到自己则不发射
             becomeAngry(); // 变得冲动
             if (calmnessJudge()) {
                 if (fireModule.fire()) /* 开火 (短时间) */ {  // 成功开火则进入冷静期
@@ -242,8 +238,7 @@ public class RobotTank extends TankBase {
         }
         // 很近时
         if (route.getTotalDistance() < veryCloseDistance + 5) {
-            if (bulletSimulator.simulate(this) /* 判断方向是否可打击到目标坦克, 转向操作在 较近 判断中已经进行 */
-                    && calmnessJudge()) {
+            if (bulletSimulator.simulate(this) /* 判断方向是否可打击到目标坦克, 转向操作在 较近 判断中已经进行 */ && calmnessJudge()) {
                 // 连发开火 (长时间)
                 putAction(new MultipleFireAction(fireTimesWhileAngry), false, false);
                 calmDown(true); // 变非常冷静
@@ -331,21 +326,17 @@ public class RobotTank extends TankBase {
      * @param doFilter 是否筛掉距离子弹较近的路径点
      */
     protected Route searchRouteTo(WayPoint targetPoint, boolean doFilter) {
-        return new BFS(
-                startPoint.getNearestWayPoint((int) rect.getCenterX(), (int) rect.getCenterY()),
-                targetPoint,
-                doFilter ? point -> {
-                    // 躲避子弹
-                    Vector<BulletBase> bullets = tankGroup.getGameMap().getBulletGroup().getBullets();
-                    for (BulletBase bullet : bullets) {
-                        Rectangle bulletRect = bullet.getRect();
-                        if (point.distanceTo((int) bulletRect.getCenterX(), (int) bulletRect.getCenterY()) < bulletDistance) {
-                            return false;
-                        }
-                    }
-                    return true;
-                } : null
-        ).search();
+        return new BFS(startPoint.getNearestWayPoint((int) rect.getCenterX(), (int) rect.getCenterY()), targetPoint, doFilter ? point -> {
+            // 躲避子弹
+            Vector<BulletBase> bullets = tankGroup.getGameMap().getBulletGroup().getBullets();
+            for (BulletBase bullet : bullets) {
+                Rectangle bulletRect = bullet.getRect();
+                if (point.distanceTo((int) bulletRect.getCenterX(), (int) bulletRect.getCenterY()) < bulletDistance) {
+                    return false;
+                }
+            }
+            return true;
+        } : null).search();
     }
 
     /**
@@ -424,16 +415,7 @@ public class RobotTank extends TankBase {
      * @apiNote 变化是 就地 的
      */
     protected @NotNull Vector<WayPoint> expandWayPoint(@NotNull WayPoint p, int X_step, int Y_step) {
-        WayPoint[] wayPoints = new WayPoint[]{
-                WayPoint.getInstance(p.x - X_step, p.y - Y_step),
-                WayPoint.getInstance(p.x, p.y - Y_step),
-                WayPoint.getInstance(p.x + X_step, p.y - Y_step),
-                WayPoint.getInstance(p.x - X_step, p.y),
-                WayPoint.getInstance(p.x + X_step, p.y),
-                WayPoint.getInstance(p.x - X_step, p.y + Y_step),
-                WayPoint.getInstance(p.x, p.y + Y_step),
-                WayPoint.getInstance(p.x + X_step, p.y + Y_step),
-        };
+        WayPoint[] wayPoints = new WayPoint[]{WayPoint.getInstance(p.x - X_step, p.y - Y_step), WayPoint.getInstance(p.x, p.y - Y_step), WayPoint.getInstance(p.x + X_step, p.y - Y_step), WayPoint.getInstance(p.x - X_step, p.y), WayPoint.getInstance(p.x + X_step, p.y), WayPoint.getInstance(p.x - X_step, p.y + Y_step), WayPoint.getInstance(p.x, p.y + Y_step), WayPoint.getInstance(p.x + X_step, p.y + Y_step),};
         Vector<WayPoint> expanded = new Vector<>();
         outer:
         for (WayPoint p1 : wayPoints) {

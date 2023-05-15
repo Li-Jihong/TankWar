@@ -26,7 +26,7 @@ public class Translation {
     public String bulletNumLabelText = "Bullet Num: ";
     public String loading = "Loading...";
     public String qTreeDepthLabelText = "Quadtree depth: ";
-    public String frameTitle = "Tank War(Practice) --Author: azazo1";
+    public String frameTitle = "TankWar --Auther: HNU2021CS-Jihong_Li";
     public String basicTankInfoFormat = """
             <html>Tank %s (Seq: %d):<br>
             &emsp;&emsp;Rank: %d<br>
@@ -124,7 +124,7 @@ public class Translation {
             bulletNumLabelText = "子弹数量: ";
             loading = "加载中...";
             qTreeDepthLabelText = "四叉树深度: ";
-            frameTitle = "坦克战争(练习) --作者:azazo1";
+            frameTitle = "坦克大战 --作者: 海南大学2021级计科李季鸿";
             basicTankInfoFormat = """
                     <html>坦克 %s (序号: %d):<br>
                     &emsp;&emsp;排名: %d<br>

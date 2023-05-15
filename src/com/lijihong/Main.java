@@ -13,9 +13,9 @@ public class Main {  //todo 设置界面
     public static void main(String[] args) throws IOException {
         init();
         MyFrame f = new MyFrame();
-        MenuPanel m = new MenuPanel(f);
-        f.setResizable(false);
-        resizeWindow(f, Config.WINDOW_WIDTH, Config.WINDOW_HEIGHT);
+        new MenuPanel(f);
+        f.setResizable(true); // 禁止 MyFrame 的大小调整。
+//        resizeWindow(f, Config.WINDOW_WIDTH, Config.WINDOW_HEIGHT);
         f.setVisible(true);
         System.out.println("启动成功啦！！！");
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

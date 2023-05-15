@@ -18,6 +18,8 @@ import com.lijihong.online.server.toclient.TalkingRoom;
 import com.lijihong.util.MyFrameSetting;
 import com.lijihong.util.MyURL;
 import com.lijihong.util.Tools;
+import com.lijihong.game.session.ServerGameSessionIntro;
+import com.lijihong.online.client.ClientGameMap;
 import org.jetbrains.annotations.NotNull;
 
 import javax.imageio.ImageIO;
@@ -52,6 +54,7 @@ public class OnlineWaitingRoomPanel {
     public final Client client;
     private JLabel connectionInfo;
     private JList<String> clientList;
+
     private JLabel yourProfile;
     private JLabel cilentListTitle;
     private JLabel playerListTitle;
